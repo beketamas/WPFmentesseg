@@ -99,7 +99,7 @@ namespace Feladat
 
 			}
 			
-			if (rbKetto.IsChecked == true)
+			else if (rbKetto.IsChecked == true)
 			{
 
 
@@ -117,6 +117,7 @@ namespace Feladat
 					{
 						continue;
 					}
+
 					utoNevek.RemoveAt(utonevRandom);
 					utoNevek.RemoveAt(utonevRandom2);
 				}
@@ -130,8 +131,7 @@ namespace Feladat
 			lblCsaladnevSzam.Content = csaladNevek.Count;
 			lblMaxSzam.Content = csaladNevek.Count;
 			stbRendezes.Content = " ";
-			lbGeneraltNevek.Items.MoveCurrentToLast();
-			lbGeneraltNevek.ScrollIntoView(lbGeneraltNevek.Items.CurrentItem);
+			NevListaVegereUgras();
 
 		}
 
@@ -147,6 +147,8 @@ namespace Feladat
 			lbGeneraltNevek.ItemsSource="";
 			generaltNevek.Clear();
 
+
+
 			for (int i = 0; i < torlendoCsaladNevek.Count; i++)
 			{
 				csaladNevek.Add(torlendoCsaladNevek[i]);
@@ -157,16 +159,17 @@ namespace Feladat
 			{
 				utoNevek.Add(torlendoUtoNevek[i]);
 			}
-
+			
 			for (int i = 0; i < torlendoUtoNevek2.Count; i++)
 			{
 				utoNevek.Add(torlendoUtoNevek2[i]);
-				NevListaVegereUgras();
 
 			}
+			
 			torlendoUtoNevek.Clear();
 			torlendoUtoNevek2.Clear();
 			torlendoCsaladNevek.Clear();
+			//lbUtonevek.ItemsSource = utoNevek;
 
 			sldCsuszka.Maximum = csaladNevek.Count;
 			lblUtonevSzam.Content = utoNevek.Count;
@@ -203,6 +206,8 @@ namespace Feladat
 			lbCsaladnevek.ScrollIntoView(lbCsaladnevek.Items.CurrentItem);
 			lbUtonevek.Items.MoveCurrentToLast();
 			lbUtonevek.ScrollIntoView(lbUtonevek.Items.CurrentItem);
+			lbGeneraltNevek.Items.MoveCurrentToLast();
+			lbGeneraltNevek.ScrollIntoView(lbGeneraltNevek.Items.CurrentItem);
 
 		}
 
@@ -246,9 +251,26 @@ namespace Feladat
 		private void DoubleClick(object sender, MouseButtonEventArgs e)
 		{
 			string kivalasztottNev = Convert.ToString(lbGeneraltNevek.SelectedItem);
+			
 			if (lbGeneraltNevek.SelectedItem != null)
 			{
 				generaltNevek.Remove(kivalasztottNev);
+
+				if (kivalasztottNev.Length == 2)
+				{
+					string[] tomb = kivalasztottNev.Split(" ");
+					torlendoCsaladNevek.Remove(tomb[0]);
+					torlendoUtoNevek.Remove(tomb[1]);
+				}
+
+				else if (kivalasztottNev.Length == 3)
+				{
+					string[] tomb = kivalasztottNev.Split(" ");
+					torlendoCsaladNevek.Remove(tomb[0]);
+					torlendoUtoNevek.Remove(tomb[1]);
+					torlendoUtoNevek2.Remove(tomb[1]);
+				}
+
 			}
 
 			string[] visszadad = kivalasztottNev.Split(" ");
