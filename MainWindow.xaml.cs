@@ -167,7 +167,6 @@ namespace Feladat
 			torlendoUtoNevek.Clear();
 			torlendoUtoNevek2.Clear();
 			torlendoCsaladNevek.Clear();
-			lbUtonevek.ItemsSource = utoNevek;
 
 			sldCsuszka.Maximum = csaladNevek.Count;
 			lblUtonevSzam.Content = utoNevek.Count;
