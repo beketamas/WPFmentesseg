@@ -114,7 +114,10 @@ namespace Feladat
 					csaladNevek.RemoveAt(csaladnevRandom);
 					if (utonevRandom2 >= utoNevek.Count || utoNevek[utonevRandom2] == utoNevek[utonevRandom])
 					{
-
+						
+						torlendoCsaladNevek.Remove(csaladNevek[csaladnevRandom]);
+						torlendoUtoNevek.Remove(utoNevek[utonevRandom]);
+						torlendoUtoNevek2.Remove(utoNevek[utonevRandom2]);
 						continue;
 					}
 
