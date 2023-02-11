@@ -107,7 +107,7 @@ namespace Feladat
 				{
 					int csaladnevRandom = rnd.Next(0, csaladNevek.Count);
 					int utonevRandom = rnd.Next(0, utoNevek.Count);
-					int utonevRandom2 = rnd.Next(0, utoNevek.Count);
+					int utonevRandom2 = rnd.Next(0, utoNevek.Count-1);
 					generaltNevek.Add(csaladNevek[csaladnevRandom] + " " + utoNevek[utonevRandom] + " " + utoNevek[utonevRandom2]);
 					torlendoCsaladNevek.Add(csaladNevek[csaladnevRandom]);
 					torlendoUtoNevek.Add(utoNevek[utonevRandom]);
