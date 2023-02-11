@@ -111,7 +111,6 @@ namespace Feladat
 					torlendoCsaladNevek.Add(csaladNevek[csaladnevRandom]);
 					torlendoUtoNevek.Add(utoNevek[utonevRandom]);
 					torlendoUtoNevek2.Add(utoNevek[utonevRandom2]);
-					csaladNevek.RemoveAt(csaladnevRandom);
 					if (utonevRandom2 >= utoNevek.Count || utoNevek[utonevRandom2] == utoNevek[utonevRandom])
 					{
 						
@@ -120,7 +119,7 @@ namespace Feladat
 						torlendoUtoNevek2.Remove(utoNevek[utonevRandom2]);
 						continue;
 					}
-
+					csaladNevek.RemoveAt(csaladnevRandom);
 					utoNevek.RemoveAt(utonevRandom);
 					utoNevek.RemoveAt(utonevRandom2);
 				}
