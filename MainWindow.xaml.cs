@@ -28,12 +28,12 @@ namespace Feladat
 	/// </summary>
 	public partial class MainWindow : Window
 	{
-		public ObservableCollection<string> utoNevek = new ObservableCollection<string>();
-		public ObservableCollection<string> csaladNevek= new ObservableCollection<string>();
-		public ObservableCollection<string> generaltNevek = new ObservableCollection<string>();
-		public ObservableCollection<string> torlendoCsaladNevek = new ObservableCollection<string>();
-		public ObservableCollection<string> torlendoUtoNevek = new ObservableCollection<string>();
-		public ObservableCollection<string> torlendoUtoNevek2 = new ObservableCollection<string>();
+		public ObservableCollection<String> utoNevek = new ObservableCollection<string>();
+		public ObservableCollection<String> csaladNevek= new ObservableCollection<string>();
+		public ObservableCollection<String> generaltNevek = new ObservableCollection<string>();
+		public ObservableCollection<String> torlendoCsaladNevek = new ObservableCollection<string>();
+		public ObservableCollection<String> torlendoUtoNevek = new ObservableCollection<string>();
+		public ObservableCollection<String> torlendoUtoNevek2 = new ObservableCollection<string>();
 
 		public MainWindow()
 		{
@@ -137,7 +137,7 @@ namespace Feladat
 
 		private void sldCsuszka_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
 		{
-			txtSzmalalo.Text = Convert.ToString((int)sldCsuszka.Value);
+			txtSzamlalo.Text = Convert.ToString((int)sldCsuszka.Value);
 		}
 
 		private void btnTorol_Click(object sender, RoutedEventArgs e)
@@ -181,15 +181,15 @@ namespace Feladat
 		{
 			try
 			{
-				if (txtSzmalalo.Focus())
+				if (txtSzamlalo.Focus())
 				{
-					sldCsuszka.Value = Convert.ToDouble(txtSzmalalo.Text);
+					sldCsuszka.Value = Convert.ToDouble(txtSzamlalo.Text);
 				}
 			}
 			catch (Exception)
 			{
 
-				if (txtSzmalalo.Text == "")
+				if (txtSzamlalo.Text == "")
 				{
 					sldCsuszka.Value = 0;
 				}
@@ -248,7 +248,7 @@ namespace Feladat
 
 		private void DoubleClick(object sender, MouseButtonEventArgs e)
 		{
-			string kivalasztottNev = Convert.ToString(lbGeneraltNevek.SelectedItem);
+			string? kivalasztottNev = Convert.ToString(lbGeneraltNevek.SelectedItem);
 			
 			if (lbGeneraltNevek.SelectedItem != null)
 			{
