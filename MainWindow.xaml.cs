@@ -242,6 +242,7 @@ namespace Feladat
 					throw;
 					
 				}
+				MessageBox.Show("Sikeres a mentés!");
 				saveFile.Dispose();
 			}
 			
