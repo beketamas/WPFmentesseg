@@ -102,7 +102,6 @@ namespace Feladat
 			else if (rbKetto.IsChecked == true)
 			{
 
-
 				for (int i = 0; i < csuzskaErtek; i++)
 				{
 					int csaladnevRandom = rnd.Next(0, csaladNevek.Count);
@@ -115,6 +114,7 @@ namespace Feladat
 					csaladNevek.RemoveAt(csaladnevRandom);
 					if (utonevRandom2 >= utoNevek.Count || utoNevek[utonevRandom2] == utoNevek[utonevRandom])
 					{
+
 						continue;
 					}
 
@@ -179,6 +179,7 @@ namespace Feladat
 
 		private void txtSzmalalo_TextChanged(object sender, TextChangedEventArgs e)
 		{
+
 			try
 			{
 				if (txtSzamlalo.Focus())
