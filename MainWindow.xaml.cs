@@ -273,20 +273,20 @@ namespace Feladat
 
 			}
 
-			string[] visszadad = kivalasztottNev.Split(" ");
+			string[] visszaad = kivalasztottNev.Split(" ");
 
 			lbGeneraltNevek.ItemsSource = generaltNevek;
 
-			if (visszadad.Length == 3)
+			if (visszaad.Length == 3)
 			{
-				csaladNevek.Add(visszadad[0]);
-				utoNevek.Add(visszadad[1]);
-				utoNevek.Add(visszadad[2]);
+				csaladNevek.Add(visszaad[0]);
+				utoNevek.Add(visszaad[1]);
+				utoNevek.Add(visszaad[2]);
 			}
 			else
 			{
-				csaladNevek.Add(visszadad[0]);
-				utoNevek.Add(visszadad[1]);
+				csaladNevek.Add(visszaad[0]);
+				utoNevek.Add(visszaad[1]);
 			}
 		
 
