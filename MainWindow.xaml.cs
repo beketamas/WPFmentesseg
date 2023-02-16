@@ -242,7 +242,7 @@ namespace Feladat
 					if (sfd.FilterIndex == 2)
 					{
 						string nevek = "";
-						foreach (var item in lbGeneraltNevek.Items)
+						foreach (Object item in lbGeneraltNevek.Items)
 						{
 							string[] tomb = item.ToString().Split(" ");
 							if (tomb.Length == 2)
