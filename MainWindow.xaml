@@ -29,7 +29,7 @@
                 <StackPanel Height="100">
                     <StackPanel Orientation="Horizontal">
                         <Label Content="Utónevek száma:" Width="100"></Label>
-                        <RadioButton x:Name="rbEgy" Height="15"></RadioButton>
+                        <RadioButton IsChecked="True" x:Name="rbEgy" Height="15"></RadioButton>
                         <Label Content="Egy"></Label>
                         <RadioButton x:Name="rbKetto" Height="15"></RadioButton>
                         <Label Content="Kettő"></Label>
