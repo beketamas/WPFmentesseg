@@ -51,7 +51,7 @@ namespace Feladat
 					lbUtonevek.Items.Add(nev);
 				}
 			}
-			lblUtonevSzam.Content = utoNevek.Count;
+			lblUtonevSzam.Content = lbUtonevek.Items.Count;
 			
 		}
 
