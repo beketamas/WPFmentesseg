@@ -48,8 +48,8 @@ namespace Feladat
 				foreach (var nev in File.ReadAllLines(ofd.FileName).ToList())
 				{
 					utoNevek.Add(nev);
+					lbUtonevek.Items.Add(nev);
 				}
-				lbUtonevek.ItemsSource = utoNevek;
 			}
 			lblUtonevSzam.Content = utoNevek.Count;
 			
@@ -63,35 +63,37 @@ namespace Feladat
 				foreach (var nev in File.ReadAllLines(ofd.FileName).ToList())
 				{
 					csaladNevek.Add(nev);
+					lbCsaladnevek.Items.Add(nev);
 				}
-				lbCsaladnevek.ItemsSource = csaladNevek;
 			}
 
 
-			lblCsaladnevSzam.Content=csaladNevek.Count;
-			lblMaxSzam.Content = csaladNevek.Count;
-			sldCsuszka.Maximum = csaladNevek.Count;
+			lblCsaladnevSzam.Content= lbCsaladnevek.Items.Count;
+			lblMaxSzam.Content = lbCsaladnevek.Items.Count;
+			sldCsuszka.Maximum = lbCsaladnevek.Items.Count;
 		}
 
 		private void btnGeneral_Click(object sender, RoutedEventArgs e)
 		{
 			Random rnd = new Random();
 			double csuzskaErtek = Convert.ToInt32(sldCsuszka.Value);
-			//lbGeneraltNevek.Items.SortDescriptions.Clear();
 			if (rbEgy.IsChecked == true)
 			{
 
 				for (int i = 0; i < Math.Floor(csuzskaErtek); i++)
 				{
-					int csaladnevRandom = rnd.Next(0, csaladNevek.Count);
-					int utonevRandom = rnd.Next(0, utoNevek.Count);
+					int csaladnevRandom = rnd.Next(0, lbCsaladnevek.Items.Count);
+					int utonevRandom = rnd.Next(0, lbUtonevek.Items.Count);
 
 
-					generaltNevek.Add(csaladNevek[csaladnevRandom] + " " + utoNevek[utonevRandom]);
-					torlendoCsaladNevek.Add(csaladNevek[csaladnevRandom]);
-					torlendoUtoNevek.Add(utoNevek[utonevRandom]);
+					generaltNevek.Add(lbCsaladnevek.Items[csaladnevRandom] + " " + lbUtonevek.Items[utonevRandom]);
+					torlendoCsaladNevek.Add((string)lbCsaladnevek.Items[csaladnevRandom]);
+					torlendoUtoNevek.Add((string)lbUtonevek.Items[utonevRandom]);
+					lbCsaladnevek.Items.RemoveAt(csaladnevRandom);
+					lbUtonevek.Items.RemoveAt(utonevRandom);
 					csaladNevek.RemoveAt(csaladnevRandom);
 					utoNevek.RemoveAt(utonevRandom);
+					
 
 				}
 
@@ -100,7 +102,6 @@ namespace Feladat
 					lbGeneraltNevek.Items.Add(item);
 				}
 				generaltNevek.Clear();
-				//lbGeneraltNevek.ItemsSource = generaltNevek;
 
 
 			}
@@ -111,14 +112,17 @@ namespace Feladat
 				for (int i = 0; i < Math.Floor(csuzskaErtek); i++)
 				{
 					string utonev, csaladnev, utonev2;
-					int csaladnevRandom = rnd.Next(0, csaladNevek.Count);
-					int utonevRandom = rnd.Next(0, utoNevek.Count);
-					int utonevRandom2 = rnd.Next(0, utoNevek.Count-1);
-					csaladnev = csaladNevek[csaladnevRandom];
+					int csaladnevRandom = rnd.Next(0, lbCsaladnevek.Items.Count);
+					int utonevRandom = rnd.Next(0, lbUtonevek.Items.Count);
+					int utonevRandom2 = rnd.Next(0, lbUtonevek.Items.Count - 1);
+					csaladnev = (string)lbCsaladnevek.Items[csaladnevRandom];
+					lbCsaladnevek.Items.RemoveAt(csaladnevRandom);
 					csaladNevek.RemoveAt(csaladnevRandom);
-					utonev = utoNevek[utonevRandom];
+					utonev = (string)lbUtonevek.Items[utonevRandom];
+					lbUtonevek.Items.RemoveAt(utonevRandom);
 					utoNevek.RemoveAt(utonevRandom);
-					utonev2 = utoNevek[utonevRandom2];
+					utonev2 = (string)lbUtonevek.Items[utonevRandom2];
+					lbUtonevek.Items.RemoveAt(utonevRandom2);
 					utoNevek.RemoveAt(utonevRandom2);
 					generaltNevek.Add(csaladnev + " " + utonev + " " + utonev2);
 					torlendoCsaladNevek.Add(csaladnev);
@@ -126,7 +130,6 @@ namespace Feladat
 					torlendoUtoNevek2.Add(utonev2);
 					
 				}
-				//lbGeneraltNevek.ItemsSource = generaltNevek;
 
 				foreach (var item in generaltNevek)
 				{
@@ -135,10 +138,10 @@ namespace Feladat
 				generaltNevek.Clear();
 			}
 
-			sldCsuszka.Maximum = csaladNevek.Count;
-			lblUtonevSzam.Content = utoNevek.Count;
-			lblCsaladnevSzam.Content = csaladNevek.Count;
-			lblMaxSzam.Content = csaladNevek.Count;
+			sldCsuszka.Maximum = lbCsaladnevek.Items.Count;
+			lblUtonevSzam.Content = lbUtonevek.Items.Count;
+			lblCsaladnevSzam.Content = lbCsaladnevek.Items.Count;
+			lblMaxSzam.Content = lbCsaladnevek.Items.Count;
 			stbRendezes.Content = " ";
 			NevListaVegereUgras();
 
@@ -158,30 +161,32 @@ namespace Feladat
 			foreach (Object item in torlendoCsaladNevek)
 			{
 				csaladNevek.Add((string)item);
+				lbCsaladnevek.Items.Add(item);
 			}
 
 			foreach (Object item in torlendoUtoNevek)
 			{
 				utoNevek.Add((string)item);
+				lbUtonevek.Items.Add(item);
+
 			}
 
 			foreach (Object item in torlendoUtoNevek2)
 			{
 				utoNevek.Add((string)item);
+				lbUtonevek.Items.Add(item);
+				
+
 			}
-			
+
 			torlendoUtoNevek.Clear();
 			torlendoUtoNevek2.Clear();
 			torlendoCsaladNevek.Clear();
-			lbCsaladnevek.ItemsSource = csaladNevek;
-			lbUtonevek.ItemsSource = utoNevek;
-
-			sldCsuszka.Maximum = csaladNevek.Count;
-			lblUtonevSzam.Content = utoNevek.Count;
-			lblCsaladnevSzam.Content = csaladNevek.Count;
-			lblMaxSzam.Content = csaladNevek.Count;
+			sldCsuszka.Maximum = lbCsaladnevek.Items.Count;
+			lblUtonevSzam.Content = lbUtonevek.Items.Count;
+			lblCsaladnevSzam.Content = lbCsaladnevek.Items.Count;
+			lblMaxSzam.Content = lbCsaladnevek.Items.Count;
 			NevListaVegereUgras();
-
 		}
 
 		private void txtSzmalalo_TextChanged(object sender, TextChangedEventArgs e)
@@ -294,6 +299,7 @@ namespace Feladat
 					
 					torlendoCsaladNevek.Remove(tomb[0]);
 					torlendoUtoNevek.Remove(tomb[1]);
+					lbGeneraltNevek.Items.Remove(kivalasztottNev);
 				}
 
 				else if (tomb.Length == 3)
@@ -301,33 +307,70 @@ namespace Feladat
 					torlendoCsaladNevek.Remove(tomb[0]);
 					torlendoUtoNevek.Remove(tomb[1]);
 					torlendoUtoNevek2.Remove(tomb[2]);
+					lbGeneraltNevek.Items.Remove(kivalasztottNev);
 				}
 
 			}
 
-			lbGeneraltNevek.ItemsSource = generaltNevek;
 
 			if (tomb.Length == 3)
 			{
 				csaladNevek.Add(tomb[0]);
 				utoNevek.Add(tomb[1]);
 				utoNevek.Add(tomb[2]);
+				lbCsaladnevek.Items.Add(tomb[0]);
+				lbUtonevek.Items.Add(tomb[1]);
+				lbUtonevek.Items.Add(tomb[2]);
 			}
 			else
 			{
 				csaladNevek.Add(tomb[0]);
 				utoNevek.Add(tomb[1]);
+				lbCsaladnevek.Items.Add(tomb[0]);
+				lbUtonevek.Items.Add(tomb[1]);
 			}
 		
 
-			sldCsuszka.Maximum = csaladNevek.Count;
-			lblUtonevSzam.Content = utoNevek.Count;
-			lblCsaladnevSzam.Content = csaladNevek.Count;
-			lblMaxSzam.Content = csaladNevek.Count;
+			sldCsuszka.Maximum = lbCsaladnevek.Items.Count;
+			lblUtonevSzam.Content = lbUtonevek.Items.Count;
+			lblCsaladnevSzam.Content = lbCsaladnevek.Items.Count;
+			lblMaxSzam.Content = lbCsaladnevek.Items.Count;
 
 			NevListaVegereUgras();
 
 		}
-		
-	}
+
+		private void btnAthelyezes_Click(object sender, RoutedEventArgs e)
+		{
+			lbCsaladnevek.Items.Clear();
+			lbUtonevek.Items.Clear();
+
+
+			foreach (Object item in csaladNevek)
+			{
+				lbUtonevek.Items.Add(item);
+			}
+
+			foreach (Object item in utoNevek)
+			{
+				lbUtonevek.Items.Add(item);
+			}
+			utoNevek.Clear();
+
+			foreach (var item in csaladNevek)
+			{
+				utoNevek.Add(item);
+			}
+			foreach (Object item in lbUtonevek.Items)
+			{
+				utoNevek.Add((string)item);
+			}
+
+			csaladNevek.Clear();
+			sldCsuszka.Maximum = lbCsaladnevek.Items.Count;
+			lblUtonevSzam.Content = lbUtonevek.Items.Count;
+			lblCsaladnevSzam.Content = lbCsaladnevek.Items.Count;
+			lblMaxSzam.Content = lbCsaladnevek.Items.Count;
+		}
+    }
 }

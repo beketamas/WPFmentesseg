@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Feladat"
         mc:Ignorable="d"
-        Title="MainWindow" Height="720" Width="800">
+        Title="MainWindow" Height="780" Width="800">
     <Grid>
+
         <StackPanel Margin="0,10,0,0" HorizontalAlignment="Left" Width="400">
             <StackPanel Orientation="Horizontal" Width="385">
                 <Button Content="Betöltés" Width="55" Height="30" Name="btnCsaladnev" Click="btnCsaladnev_Click"></Button>
@@ -14,7 +15,7 @@
                 <Label Name="lblCsaladnevSzam" Content="0"></Label>
             </StackPanel>
             <ListBox Margin="0,10,0,10" Background="BlanchedAlmond" Name="lbCsaladnevek" Height="245" Width="370"></ListBox>
-            <ListBox Background="Salmon" MouseDoubleClick="DoubleClick" Name="lbGeneraltNevek" Height="350" Width="370"></ListBox>
+            <ListBox Background="Salmon" MouseDoubleClick="DoubleClick" Name="lbGeneraltNevek" Height="410" Width="370"></ListBox>
         </StackPanel>
 
         <StackPanel HorizontalAlignment="Right" Margin="0,10,0,0" Width="400">
@@ -51,6 +52,7 @@
                 <Button Margin="0,10,0,0" x:Name="btnTorol" Content="Generált nevek törlése" Height="50" Width="370" Click="btnTorol_Click"></Button>
                 <Button Margin="0,10,0,0" x:Name="btnRendez" Content="Nevek rendezése" Height="50" Width="370" Click="btnRendez_Click"></Button>
                 <Button Margin="0,10,0,0" x:Name="btnMentes" Content="Nevek mentése" Height="50" Width="370" Click="btnMentes_Click" ></Button>
+                <Button Margin="0,10,0,0" x:Name="btnAthelyezes" Content="Nevek áthelyezése" Height="50" Width="370" Click="btnAthelyezes_Click" ></Button>
             </StackPanel>
 
         </StackPanel>
